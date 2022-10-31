@@ -1,0 +1,15 @@
+from Work.Rational import Rational
+def main():
+    a = Rational(3,4)
+    b = Rational(1,4)
+    print(a + b)
+    print(a - b)
+    print(a * b)
+    print(a / b)
+    print(a < b)
+    print(a <= b)
+    print(a > b)
+    print(a >= b)
+    print(a == b)
+    print(a != b)
+main()
