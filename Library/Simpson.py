@@ -1,4 +1,3 @@
-from numpy import ones
 from Library.Rational import Rational
 from Library.Real import Real, sin, cos
 

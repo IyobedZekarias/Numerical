@@ -1,6 +1,5 @@
 from Library.Rational import Rational
 from Library.Real import Real, sin
-import numpy as np
 
 
 xpt = [Rational(2, 1), Rational(3, 1), Rational(5, 1), Rational(6, 1)]
