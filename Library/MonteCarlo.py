@@ -1,7 +1,6 @@
 from cmath import log
 from math import exp
 from operator import mod
-import numpy as np
 
 def PsRandom(x, seed, a, b, **kwargs):
     type = kwargs.get("type", float)
