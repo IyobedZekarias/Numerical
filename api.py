@@ -81,7 +81,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return 'i love you Alexye 💛'
 
 @app.route("/rational", methods = ['GET', 'POST'])
 def RationalFunction():
