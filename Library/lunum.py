@@ -1,5 +1,5 @@
 from Library.Rational import Rational
-from Library.Real import em, cos as cs, sin as sn, Real
+from Library.Real import em, cos as cs, sin as sn, Real, sqrt as square_root
 from Library.Gaussian import dumb as nv, better as gs
 from Library.Zeros import bis as zbis, sec as zsec
 from Library.InterpExterp import NDD, poly, Ext
@@ -15,6 +15,17 @@ def x1(x):
     return (Rational(1, 1) / x)
 
 eps = Rational(1, 1e20)
+
+def sqrt(x): 
+    Rat = 1
+    if type(x) == float or type(x) == int:
+        Rat = 0
+        x = Rational(x, 1)
+    func = Real(square_root)
+    ans = func(eps, x=x)
+    if not Rat:
+        ans = ans.numerator()/ans.denominator()
+    return ans
 
 def ln(x):
     Rat = 1
@@ -59,6 +70,9 @@ def sin(x):
     if not Rat:
         ans = ans.numerator()/ans.denominator()
     return ans
+
+def tan(x): 
+    return sin(x) / cos(x)
 
 def NaiveGauss(x):
     ogx = copy.deepcopy(x)
@@ -194,9 +208,9 @@ def Rand(list, lower_range, upper_range, **kwargs):
     typ = kwargs.get("type", float)
     return psr(list, seed, lower_range, upper_range, type=typ)
 
-def MonteCarlo(function, *args, **kwargs):
+def MonteCarlo(function, tuples, **kwargs):
     size = kwargs.get("rep", 2500)
-    args = args[::-1]
+    args = tuples[::1]
     if len(args) == 0: return
     lists = [[0 for i in range(size)] for j in range(len(args))]
     seed = 2**32

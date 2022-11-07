@@ -63,6 +63,9 @@ class Rational(object):
 
     # overload the ** operator
     def __pow__(self, a):
+        if type(a) == Rational: 
+            a_fl = a.numerator()/a.denominator()
+            return Rational((self._num ** a_fl), (self._denom ** a_fl))
         return Rational((self._num ** a), (self._denom ** a))
 
     # over load the < operator

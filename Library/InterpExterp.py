@@ -1,5 +1,4 @@
 from Library.Rational import Rational
-from Library.Real import Real, sin
 
 
 xpt = [Rational(2, 1), Rational(3, 1), Rational(5, 1), Rational(6, 1)]
@@ -60,7 +59,6 @@ def phi(f, x, h):
     )
 
 def Ext(function, x, lowerbound, upperbound):
-    x = Rational(6154797077, 5000000000)  # x = 1.2309594154
     d = [phi(function, x, h)
         for h in [Rational(1, 2)**n
                 for n in range(lowerbound, upperbound)]]

@@ -1,6 +1,5 @@
-from Library.lunum import ln, e, cos, sin, NaiveGauss, Gauss, bisection, secant, NewtonInterp, RichExtrap, Trapezoidal, Romberg, Simpson, Spline, Rand, MonteCarlo
+from Library.lunum import ln, e, tan, sqrt, cos, sin, NaiveGauss, Gauss, bisection, secant, NewtonInterp, RichExtrap, Trapezoidal, Romberg, Simpson, Spline, Rand, MonteCarlo
 from Library.Rational import Rational
-import math
 
 print("ln(3.5)---- \nas Rational: ", ln(Rational(35, 10)) , "\nand as a float: ", ln(3.5))
 print()
@@ -10,6 +9,7 @@ print("cos(.25)----- \nas Rational: ", cos(Rational(1, 4)), " as a float: ", cos
 print()
 print("sin(.25)---- \nas Rational: ", sin(Rational(1, 4)), " as a float: ", sin(.25))
 print()
+
 
 x = [[2.2, 1.23, 45.2, 1.1, 2.1], 
      [1.2, 23.4, 12.5, 1.78, 1.9], 
@@ -84,9 +84,14 @@ print("Rational: ", Spline(Rational(1256, 1000), x, y),
       "\nFloat: ", Spline(1.256, xflt, yflt))
 print()
 
+def f(x):
+    return eval("sin(x**(Rational(2, 1)) + 3) * (6 * x) + e(x)");
+
+def g(x): 
+    return x + 12
 
 print("Richardson Extrapolation for x = 1.2456433 for f(x) = cos(x)-------\nas Rational: ",
-      RichExtrap(cos, Rational(31141, 25000), l=0, u=10)[9][9], "\nas Float: ", RichExtrap(cos, 1.2456433, l=0, u=10)[9][9])
+      RichExtrap(f, Rational(31141, 25000), l=0, u=10)[9][9], "\nas Float: ", RichExtrap(f, 1.2456433, l=0, u=10)[9][9])
 
 print()
 print("Trapezoidal Integration for f(x) = cos(x) from 0 to 14-------\nas Rational: ",
@@ -108,11 +113,21 @@ print()
 
 
 def mofun(args):
-    return ((args[1]*args[0]+args[2]**2) + args[2] * e(args[1]) + cos(args[0]))
+    return (eval("sin(args[0]) * args[1]**e(3) + args[2]"))
 
 
-D = MonteCarlo(mofun, (0, 1), (-2, 3), (-1, 9), size=9000)
+D = MonteCarlo(mofun, [(0, 1), (-2, 3), (-1, 9)], size=9000)
 print("Monte Carlo ∫0 to 1 ∫-2 to 3 ∫-1 to 9 ((xy+z^2) + z * e^y + cos(x)) dxdydz = ", D)
 print()
+
+
+
+# user_func = input("type a function: y = ")
+
+# def f(x): 
+#     return eval("sin(x**2)")
+
+# for x in range(1,10):
+# 	print ("x = ", Rational(x, 342) , ", y = ", f(Rational(x, 342)))
 
 
