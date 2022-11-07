@@ -79,6 +79,10 @@ from flask import Flask, request
 app = Flask(__name__)
 #Make an app.route() decorator here
 
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
 @app.route("/rational", methods = ['GET', 'POST'])
 def RationalFunction():
     if request.method == 'GET':
