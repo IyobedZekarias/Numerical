@@ -1,7 +1,7 @@
 from http import server
 import multiprocessing
 # bind = "127.0.0.1:5000"
-workers = multiprocessing.cpu_count() * 2 + 1
+workers = multiprocessing.cpu_count()
 reload = True
 threads = 3
 max_requests = 1000
